@@ -28,7 +28,7 @@ public class Tree_Projectile_Direct : Tree
 	public override void Think() {
 		base.Think();
 		
-		Debug.Log("I AM TREE: " + name);
+		// Debug.Log("I AM TREE: " + name);
 
 		var enemiesInRange = FindObjectsOfType<Transform>().Where(obj => obj.CompareTag("Enemy") && Vector3.Distance(transform.position, obj.position) <= fireRange).ToList();
 		if (enemiesInRange.Count > 0) {

@@ -19,7 +19,7 @@ public class Projectile_Splash : MonoBehaviour
 		foreach (var enemy in enemiesInRange) {
 			var distance = Vector3.Distance(enemy.position, transform.position);
 			var falloffDamage = Map(distance, damageRadius, 0 , damageMin, damageMax);
-			Debug.Log("Falloff Damage: " + falloffDamage);
+			// Debug.Log("Falloff Damage: " + falloffDamage);
 			enemy.GetComponent<IDamageable>().TakeDamage((int)falloffDamage);
 		}
 		
