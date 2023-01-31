@@ -18,6 +18,7 @@ public class EnemyNavMeshMovement : MonoBehaviour
     private bool isAttacking;
     private Vector3 targetObject;
     public Transform hand;
+    private float enemyBaseSpeed;
 
     UnityEngine.AI.NavMeshAgent nav;
 
@@ -27,6 +28,7 @@ public class EnemyNavMeshMovement : MonoBehaviour
 
     void Start()
     {
+        enemyBaseSpeed = enemySpeed;
         originSpawn = transform.position;
 
         if (nav == null)
@@ -150,5 +152,26 @@ public class EnemyNavMeshMovement : MonoBehaviour
         {
             timeRemaining = 1.5f;
         }
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Physics.IgnoreCollision(collision.collider, gameObject.GetComponent<Collider>());
+        }
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Slowing"))
+        {
+            enemySpeed /= 3;
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        enemySpeed = enemyBaseSpeed;
     }
 }
