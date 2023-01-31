@@ -253,6 +253,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f61062a0f3dd9f442946d06f006a36d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 20
+  currentHealth: 0
+  DeathEvent:
+    m_PersistentCalls:
+      m_Calls: []
   fireRange: 2
   projectile: {fileID: 8379199782105987799, guid: c66434f878152274592ef1b68d711748,
     type: 3}
