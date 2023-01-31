@@ -39,10 +39,7 @@ public class TreeCreationController : MonoBehaviour
         }
         
         gridMousePosWorld = new Vector3(Mathf.Round(rawMousePosWorld.x), 0, Mathf.Round(rawMousePosWorld.z));
-        Debug.Log(gridMousePosWorld);
-        
-        
-            
+
         if (Input.GetMouseButtonDown(0)) {
             //Place our tree if we are in the "placement" state
             if (currentState == CreationState.Placement) {
