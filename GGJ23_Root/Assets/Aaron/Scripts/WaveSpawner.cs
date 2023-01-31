@@ -194,6 +194,21 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 
+    public void ResetWaves()
+    {
+        wave = 0;
+        canSpawnWave = false;
+
+        for (int i = 0; i < enemyList.Count; i++)
+        {
+            if (enemyList[i] != null)
+            {
+                enemyList.RemoveAll(i => i == null);
+                enemyCount = 0;
+            }
+        }
+    }
+
     public IEnumerator CanSpawnWave()
     {
         yield return new WaitForSeconds(1f);
