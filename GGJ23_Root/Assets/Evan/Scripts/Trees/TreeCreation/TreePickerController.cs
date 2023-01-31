@@ -36,10 +36,16 @@ public class TreePickerController : MonoBehaviour
     }
 
     public void PickTree(GameObject treeToPick) {
+        StartCoroutine(Test(treeToPick));
+
+    }
+
+    private IEnumerator Test(GameObject treeToPick) {
+        yield return new WaitForSeconds(0.25f);
+        
         ToggleMenu(false);
 
         TreeCreationController.instance.SpawnPlacementModel(treeToPick);
         treeCreationController.SetActive(true);
-
     }
 }

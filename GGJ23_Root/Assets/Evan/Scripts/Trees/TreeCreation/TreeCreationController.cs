@@ -25,14 +25,23 @@ public class TreeCreationController : MonoBehaviour
     public CreationState currentState;
     public GameObject placeholderTree;
 
-    private void Start() {
-        
-    }
+    public LayerMask layerMask;
+    private Vector3 rawMousePosWorld;
+    private Vector3 gridMousePosWorld = Vector3.zero;
 
     private void Update() {
         //Translate our mouse position to a ground position
-        var rawMousePosWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        var gridMousePosWorld = new Vector3(Mathf.Round(rawMousePosWorld.x), 0, Mathf.Round(rawMousePosWorld.z));
+        Ray ray =Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if(Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask)) {
+            rawMousePosWorld = hit.point;
+            // Debug.Log(hit.point);
+        }
+        
+        gridMousePosWorld = new Vector3(Mathf.Round(rawMousePosWorld.x), 0, Mathf.Round(rawMousePosWorld.z));
+        Debug.Log(gridMousePosWorld);
+        
+        
             
         if (Input.GetMouseButtonDown(0)) {
             //Place our tree if we are in the "placement" state
@@ -65,8 +74,6 @@ public class TreeCreationController : MonoBehaviour
         
         Debug.Log(currentState);
         
-        var rawMousePosWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        var gridMousePosWorld = new Vector3(Mathf.Round(rawMousePosWorld.x), 0, Mathf.Round(rawMousePosWorld.z));
         
         placeholderTree = placeholderTree ? placeholderTree : Instantiate(placementPrefab, gridMousePosWorld, Quaternion.identity);
         placeholderTree.GetComponent<TreeController>().enabled = false;
