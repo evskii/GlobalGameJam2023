@@ -9,37 +9,40 @@ public class WaveSpawner : MonoBehaviour
 
     public GameObject[] enemyPrefabs;
     public Transform[] spawnPoints;
+    public List<GameObject> enemyList;
+    public GameObject nextWaveButton;
 
-    private int wave = 1;
+    public int wave = 0;
     private int maxWaves = 3;
     public int enemyCount;
 
-    public bool canSpawnWave = true;
+    public bool canSpawnWave = false;
 
     private void Start()
     {
-        switch (currentDifficultyType)
-        {
-            case Difficulty.Easy:
-                enemyCount = 3;
-                break;
-            case Difficulty.Medium:
-                enemyCount = 4;
-                break;
-            case Difficulty.Hard:
-                enemyCount = 5;
-                break;
-        }
-        Invoke("SpawnEnemies", 1f);
-        Invoke("SpawnEnemies", 3f);
-        Invoke("SpawnEnemies", 5f);
+        canSpawnWave = false;
     }
 
     public void Update()
     {
-        if (wave == maxWaves)
+        if (wave >= maxWaves)
         {
             canSpawnWave = false;
+        }
+
+        for (int i = 0; i < enemyList.Count; i++)
+        {
+            if (enemyList[i] == null)
+            {
+                enemyList.RemoveAt(i);
+                i--;
+                enemyCount--;
+            }
+        }
+
+        if (!canSpawnWave && enemyCount == 0)
+        {
+            nextWaveButton.SetActive(true);
         }
     }
 
@@ -47,17 +50,153 @@ public class WaveSpawner : MonoBehaviour
     {
         int spawnIndex = Random.Range(0, spawnPoints.Length);
         int enemyIndex = Random.Range(0, enemyPrefabs.Length);
-        Instantiate(enemyPrefabs[enemyIndex], spawnPoints[spawnIndex].position, Quaternion.identity);
+        GameObject enemy = Instantiate(enemyPrefabs[enemyIndex], spawnPoints[spawnIndex].position, Quaternion.identity);
+        enemyList.Add(enemy);
+        enemyCount++;
     }
 
     public void StartNextWave()
     {
+        canSpawnWave = true;
+        nextWaveButton.SetActive(false);
+        wave++;
+
         if (canSpawnWave)
         {
-            wave++;
-            Invoke("SpawnEnemies", 1f);
-            Invoke("SpawnEnemies", 3f);
-            Invoke("SpawnEnemies", 5f);
+            ////////// EASY //////////
+            if (currentDifficultyType == Difficulty.Easy)
+            {
+                if (wave == 1)
+                {
+                    Invoke("SpawnEnemies", 0f);
+                    Invoke("SpawnEnemies", 3f);
+                    Invoke("SpawnEnemies", 5f);
+                }
+                else if (wave == 2)
+                {
+                    Invoke("SpawnEnemies", 0f);
+                    Invoke("SpawnEnemies", 3f);
+                    Invoke("SpawnEnemies", 5f);
+                    Invoke("SpawnEnemies", 7f);
+                    Invoke("SpawnEnemies", 9f);
+                    Invoke("SpawnEnemies", 9f);
+                }
+                else if (wave == 3)
+                {
+                    Invoke("SpawnEnemies", 0f);
+                    Invoke("SpawnEnemies", 3f);
+                    Invoke("SpawnEnemies", 5f);
+                    Invoke("SpawnEnemies", 7f);
+                    Invoke("SpawnEnemies", 9f);
+                    Invoke("SpawnEnemies", 9f);
+                    Invoke("SpawnEnemies", 11f);
+                    Invoke("SpawnEnemies", 13f);
+                    Invoke("SpawnEnemies", 13f);
+                }
+            }
+            ////////// EASY //////////
+            ///////////// MEDIUM //////////
+            if (currentDifficultyType == Difficulty.Medium)
+            {
+                if (wave == 1)
+                {
+                    Invoke("SpawnEnemies", 0f);
+                    Invoke("SpawnEnemies", 3f);
+                    Invoke("SpawnEnemies", 5f);
+                    Invoke("SpawnEnemies", 7f);
+                    Invoke("SpawnEnemies", 9f);
+                    Invoke("SpawnEnemies", 11f);
+                }
+                else if (wave == 2)
+                {
+                    Invoke("SpawnEnemies", 0f);
+                    Invoke("SpawnEnemies", 3f);
+                    Invoke("SpawnEnemies", 5f);
+                    Invoke("SpawnEnemies", 7f);
+                    Invoke("SpawnEnemies", 9f);
+                    Invoke("SpawnEnemies", 11f);
+                    Invoke("SpawnEnemies", 13f);
+                    Invoke("SpawnEnemies", 15f);
+                    Invoke("SpawnEnemies", 15f);
+                }
+                else if (wave == 3)
+                {
+                    Invoke("SpawnEnemies", 0f);
+                    Invoke("SpawnEnemies", 3f);
+                    Invoke("SpawnEnemies", 5f);
+                    Invoke("SpawnEnemies", 7f);
+                    Invoke("SpawnEnemies", 9f);
+                    Invoke("SpawnEnemies", 9f);
+                    Invoke("SpawnEnemies", 11f);
+                    Invoke("SpawnEnemies", 13f);
+                    Invoke("SpawnEnemies", 13f);
+                    Invoke("SpawnEnemies", 15f);
+                    Invoke("SpawnEnemies", 17f);
+                    Invoke("SpawnEnemies", 17f);
+                }
+            }
+            ////////// MEDIUM //////////
+            ///////////// HARD //////////
+            if (currentDifficultyType == Difficulty.Hard)
+            {
+                if (wave == 1)
+                {
+                    Invoke("SpawnEnemies", 0f);
+                    Invoke("SpawnEnemies", 3f);
+                    Invoke("SpawnEnemies", 5f);
+                    Invoke("SpawnEnemies", 7f);
+                    Invoke("SpawnEnemies", 9f);
+                    Invoke("SpawnEnemies", 11f);
+                    Invoke("SpawnEnemies", 13f);
+                    Invoke("SpawnEnemies", 15f);
+                    Invoke("SpawnEnemies", 17f);
+                }
+                else if (wave == 2)
+                {
+                    Invoke("SpawnEnemies", 0f);
+                    Invoke("SpawnEnemies", 3f);
+                    Invoke("SpawnEnemies", 5f);
+                    Invoke("SpawnEnemies", 7f);
+                    Invoke("SpawnEnemies", 9f);
+                    Invoke("SpawnEnemies", 11f);
+                    Invoke("SpawnEnemies", 13f);
+                    Invoke("SpawnEnemies", 15f);
+                    Invoke("SpawnEnemies", 15f);
+                    Invoke("SpawnEnemies", 17f);
+                    Invoke("SpawnEnemies", 19f);
+                    Invoke("SpawnEnemies", 19f);
+                }
+                else if (wave == 3)
+                {
+                    Invoke("SpawnEnemies", 0f);
+                    Invoke("SpawnEnemies", 3f);
+                    Invoke("SpawnEnemies", 5f);
+                    Invoke("SpawnEnemies", 7f);
+                    Invoke("SpawnEnemies", 9f);
+                    Invoke("SpawnEnemies", 9f);
+                    Invoke("SpawnEnemies", 11f);
+                    Invoke("SpawnEnemies", 13f);
+                    Invoke("SpawnEnemies", 13f);
+                    Invoke("SpawnEnemies", 15f);
+                    Invoke("SpawnEnemies", 17f);
+                    Invoke("SpawnEnemies", 17f);
+                    Invoke("SpawnEnemies", 19f);
+                    Invoke("SpawnEnemies", 21f);
+                    Invoke("SpawnEnemies", 23f);
+                    Invoke("SpawnEnemies", 23f);
+                    Invoke("SpawnEnemies", 25f);
+
+                }
+            }
+            ////////// HARD //////////
+
+            StartCoroutine(CanSpawnWave());
         }
+    }
+
+    public IEnumerator CanSpawnWave()
+    {
+        yield return new WaitForSeconds(1f);
+        canSpawnWave = false;
     }
 }
