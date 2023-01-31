@@ -9,6 +9,13 @@ using UnityEngine;
 
 public class TreeCreationController : MonoBehaviour
 {
+    public static TreeCreationController instance;
+
+    private void Awake() {
+        instance = this;
+    }
+
+
     //Tree Stuff
     public GameObject treePrefab;
     public enum CreationState {
@@ -19,30 +26,51 @@ public class TreeCreationController : MonoBehaviour
     public GameObject placeholderTree;
 
     private void Start() {
-        currentState = CreationState.None;
+        
     }
 
     private void Update() {
+        //Translate our mouse position to a ground position
         var rawMousePosWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         var gridMousePosWorld = new Vector3(Mathf.Round(rawMousePosWorld.x), 0, Mathf.Round(rawMousePosWorld.z));
             
         if (Input.GetMouseButtonDown(0)) {
-            if (currentState == CreationState.None) {
+            //Place our tree if we are in the "placement" state
+            if (currentState == CreationState.Placement) {
+                var cellData = GridController.instance.GetCell((int)gridMousePosWorld.x, (int)gridMousePosWorld.z);
+                if (!cellData.isOccupied && cellData.canBeOccupied) {
+                    var placedTree = Instantiate(treePrefab, gridMousePosWorld, Quaternion.identity);
+                    placedTree.GetComponent<TreeController>().enabled = true;
 
-                placeholderTree = placeholderTree ? placeholderTree : Instantiate(treePrefab, gridMousePosWorld, Quaternion.identity);
-                placeholderTree.GetComponent<TreeController>().enabled = false;
+                    cellData.isOccupied = true;
+                    cellData.currentOwner = placedTree;
+
+                    Destroy(placeholderTree);
+                    currentState = CreationState.None;
+                    gameObject.SetActive(false);
+                }
                 
-                currentState = CreationState.Placement;
-            }else {
-                var placedTree = Instantiate(treePrefab, gridMousePosWorld, Quaternion.identity);
-                placedTree.GetComponent<TreeController>().enabled = true;
-                Destroy(placeholderTree);
-                currentState = CreationState.None;
             }
         }
 
         if (placeholderTree) {
             placeholderTree.transform.position = gridMousePosWorld;
+            // GridController.instance.HighlightSingleCell((int) gridMousePosWorld.x, (int) gridMousePosWorld.z);
         }
+    }
+
+    public void SpawnPlacementModel(GameObject placementPrefab) {
+        currentState = CreationState.Placement;
+        treePrefab = placementPrefab;
+        
+        Debug.Log(currentState);
+        
+        var rawMousePosWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        var gridMousePosWorld = new Vector3(Mathf.Round(rawMousePosWorld.x), 0, Mathf.Round(rawMousePosWorld.z));
+        
+        placeholderTree = placeholderTree ? placeholderTree : Instantiate(placementPrefab, gridMousePosWorld, Quaternion.identity);
+        placeholderTree.GetComponent<TreeController>().enabled = false;
+                
+        
     }
 }
