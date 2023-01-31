@@ -944,6 +944,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentEnemyType: 0
   target: {fileID: 0}
+  mainTree:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   health: 3
   enemySpeed: 3.5
   enemyDamage: 1

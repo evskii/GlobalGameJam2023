@@ -8,15 +8,17 @@ public class WaveSpawner : MonoBehaviour
     public Difficulty currentDifficultyType;
 
     public GameObject[] enemyPrefabs;
-    public Transform[] spawnPoints;
+    public Transform[] spawnPointsEasy, spawnPointsMedium, spawnPointsHard;
     public List<GameObject> enemyList;
     public GameObject nextWaveButton;
+    public GameObject[] mainTree;
 
     public int wave = 0;
     private int maxWaves = 3;
     public int enemyCount;
 
     public bool canSpawnWave = false;
+    public bool isPlayingGame = false;
 
     private void Start()
     {
@@ -48,11 +50,33 @@ public class WaveSpawner : MonoBehaviour
 
     public void SpawnEnemies()
     {
-        int spawnIndex = Random.Range(0, spawnPoints.Length);
-        int enemyIndex = Random.Range(0, enemyPrefabs.Length);
-        GameObject enemy = Instantiate(enemyPrefabs[enemyIndex], spawnPoints[spawnIndex].position, Quaternion.identity);
-        enemyList.Add(enemy);
-        enemyCount++;
+        if(isPlayingGame)
+        {
+            if (currentDifficultyType == Difficulty.Easy)
+            {
+                int spawnIndex = Random.Range(0, spawnPointsEasy.Length);
+                int enemyIndex = Random.Range(0, enemyPrefabs.Length);
+                GameObject enemy = Instantiate(enemyPrefabs[enemyIndex], spawnPointsEasy[spawnIndex].position, Quaternion.identity);
+                enemyList.Add(enemy);
+                enemyCount++;
+            }
+            if (currentDifficultyType == Difficulty.Medium)
+            {
+                int spawnIndex = Random.Range(0, spawnPointsMedium.Length);
+                int enemyIndex = Random.Range(0, enemyPrefabs.Length);
+                GameObject enemy = Instantiate(enemyPrefabs[enemyIndex], spawnPointsMedium[spawnIndex].position, Quaternion.identity);
+                enemyList.Add(enemy);
+                enemyCount++;
+            }
+            if (currentDifficultyType == Difficulty.Hard)
+            {
+                int spawnIndex = Random.Range(0, spawnPointsHard.Length);
+                int enemyIndex = Random.Range(0, enemyPrefabs.Length);
+                GameObject enemy = Instantiate(enemyPrefabs[enemyIndex], spawnPointsHard[spawnIndex].position, Quaternion.identity);
+                enemyList.Add(enemy);
+                enemyCount++;
+            }
+        }
     }
 
     public void StartNextWave()
@@ -199,13 +223,37 @@ public class WaveSpawner : MonoBehaviour
         wave = 0;
         canSpawnWave = false;
 
-        for (int i = 0; i < enemyList.Count; i++)
+        foreach (GameObject gameobject in enemyList)
         {
-            if (enemyList[i] != null)
-            {
-                enemyList.RemoveAll(i => i == null);
-                enemyCount = 0;
-            }
+            Destroy(gameobject);
+        }
+    }
+
+    public void SetDifficulty(int difficultyInt)
+    {
+        if (difficultyInt == 0)
+        {
+            currentDifficultyType = Difficulty.Easy;
+        }
+        else if (difficultyInt == 1)
+        {
+            currentDifficultyType = Difficulty.Medium;
+        }
+        else if (difficultyInt == 2)
+        {
+            currentDifficultyType = Difficulty.Hard;
+        }
+    }
+
+    public void IsGameRunning(bool isGame)
+    {
+        if (isGame)
+        {
+            isPlayingGame = true;
+        }
+        else
+        {
+            isPlayingGame = false;
         }
     }
 

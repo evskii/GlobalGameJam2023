@@ -229,6 +229,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentEnemyType: 2
   target: {fileID: 0}
+  mainTree:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   health: 3
   enemySpeed: 3.5
   enemyDamage: 1
@@ -375,7 +379,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fd948120b0334be46a4db9ef865b8e4a, type: 2}
+  - {fileID: 2100000, guid: a505d46c5a113a64a98b879921d85575, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

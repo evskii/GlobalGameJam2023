@@ -19,6 +19,7 @@ public class EnemyNavMeshMovement : MonoBehaviour
     private Vector3 targetObject;
     public Transform hand;
     private float enemyBaseSpeed;
+    private WaveSpawner waveSpawner;
 
     UnityEngine.AI.NavMeshAgent nav;
 
@@ -36,11 +37,6 @@ public class EnemyNavMeshMovement : MonoBehaviour
             nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
         }
 
-        if (target == null)
-        {
-            target = GameObject.Find("Yggdrasill").GetComponent<Transform>();
-        }
-
         if (currentEnemyType == enemyType.big)
         {
             health = health * 2;
@@ -49,14 +45,32 @@ public class EnemyNavMeshMovement : MonoBehaviour
             transform.localScale = transform.localScale * 1.5f;
         }
 
+        if (waveSpawner == null)
+        {
+            waveSpawner = GameObject.Find("WaveSpawner").GetComponent<WaveSpawner>();
+        }
+
         nav.SetDestination(target.position);
     }
 
     void Update()
     {
+        if (waveSpawner.currentDifficultyType == WaveSpawner.Difficulty.Easy)
+        {
+            target = waveSpawner.mainTree[0].GetComponent<Transform>();
+        }
+        if (waveSpawner.currentDifficultyType == WaveSpawner.Difficulty.Medium)
+        {
+            target = waveSpawner.mainTree[1].GetComponent<Transform>();
+        }
+        if (waveSpawner.currentDifficultyType == WaveSpawner.Difficulty.Hard)
+        {
+            target = waveSpawner.mainTree[2].GetComponent<Transform>();
+        }
+
         if (currentEnemyType == enemyType.normal || currentEnemyType == enemyType.big)
         {
-            if ((target.position - this.transform.position).sqrMagnitude < 1 * 2)
+            if ((target.position - this.transform.position).sqrMagnitude < 2 * 2)
             {
                 isAttacking = true;
                 gameObject.GetComponent<Animator>().SetBool("Attack", true);
@@ -64,7 +78,7 @@ public class EnemyNavMeshMovement : MonoBehaviour
             }
             else
             {
-                Collider[] colliders = Physics.OverlapSphere(transform.position, 1f);
+                Collider[] colliders = Physics.OverlapSphere(transform.position, 2f);
                 foreach (Collider col in colliders)
                 {
                     if (col.gameObject.CompareTag("Tree"))
