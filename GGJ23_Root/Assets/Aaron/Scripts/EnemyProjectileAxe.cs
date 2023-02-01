@@ -5,7 +5,12 @@ using UnityEngine;
 public class EnemyProjectileAxe : MonoBehaviour
 {
     public int damage;
-    
+
+    public void Start()
+    {
+        Destroy(gameObject, 1f);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("TRIGGER");
@@ -13,6 +18,7 @@ public class EnemyProjectileAxe : MonoBehaviour
         {
             Debug.Log("HIT TREE");
             other.GetComponentInParent<IDamageable>().TakeDamage(damage);
+            Destroy(gameObject);
         }
     }
 }

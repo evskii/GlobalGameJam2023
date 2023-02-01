@@ -34,8 +34,15 @@ public class TreeCreationController : MonoBehaviour
             rawMousePosWorld = hit.point;
             // Debug.Log(hit.point);
         }
+
+        var x = Mathf.Round(rawMousePosWorld.x);
+        x = x % 2 == 0 ? x + 1 : x;
+
+        var z = Mathf.Round(rawMousePosWorld.z);
+        z = z % 2 == 0 ? z + 1 : z;
         
-        gridMousePosWorld = new Vector3(Mathf.Round(rawMousePosWorld.x), 0, Mathf.Round(rawMousePosWorld.z));
+        // gridMousePosWorld = new Vector3(Mathf.Round(rawMousePosWorld.x), 0, Mathf.Round(rawMousePosWorld.z));
+        gridMousePosWorld = new Vector3(x, 0, z);
 
         if (Input.GetMouseButtonDown(0)) {
             //Place our tree if we are in the "placement" state

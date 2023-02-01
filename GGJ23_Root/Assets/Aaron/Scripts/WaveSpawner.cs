@@ -12,17 +12,32 @@ public class WaveSpawner : MonoBehaviour
     public List<GameObject> enemyList;
     public GameObject nextWaveButton;
     public GameObject mainTree;
+    public GameObject winText;
 
     public int wave = 0;
     private int maxWaves = 3;
-    public int enemyCount;
+    private int enemyCount;
 
     public bool canSpawnWave = false;
     public bool isPlayingGame = false;
+    private bool gameWon = false;
 
     private void Start()
     {
         canSpawnWave = false;
+
+        if (currentDifficultyType == Difficulty.Easy)
+        {
+            enemyCount = 18;
+        }
+        if (currentDifficultyType == Difficulty.Medium)
+        {
+            enemyCount = 27;
+        }
+        if (currentDifficultyType == Difficulty.Hard)
+        {
+            enemyCount = 38;
+        }
     }
 
     [ContextMenu("Test Start Easy")]
@@ -49,10 +64,12 @@ public class WaveSpawner : MonoBehaviour
             }
         }
 
-        if (!canSpawnWave && enemyCount == 0)
+        if (wave >= maxWaves && gameWon)
         {
-            nextWaveButton.SetActive(true);
+            winText.SetActive(true);
         }
+
+        NextWaveEnemyCounts();
     }
 
     public void SpawnEnemies()
@@ -65,7 +82,6 @@ public class WaveSpawner : MonoBehaviour
                 int enemyIndex = Random.Range(0, enemyPrefabs.Length);
                 GameObject enemy = Instantiate(enemyPrefabs[enemyIndex], spawnPointsEasy[spawnIndex].position, Quaternion.identity);
                 enemyList.Add(enemy);
-                enemyCount++;
             }
             if (currentDifficultyType == Difficulty.Medium)
             {
@@ -73,7 +89,6 @@ public class WaveSpawner : MonoBehaviour
                 int enemyIndex = Random.Range(0, enemyPrefabs.Length);
                 GameObject enemy = Instantiate(enemyPrefabs[enemyIndex], spawnPointsMedium[spawnIndex].position, Quaternion.identity);
                 enemyList.Add(enemy);
-                enemyCount++;
             }
             if (currentDifficultyType == Difficulty.Hard)
             {
@@ -81,7 +96,6 @@ public class WaveSpawner : MonoBehaviour
                 int enemyIndex = Random.Range(0, enemyPrefabs.Length);
                 GameObject enemy = Instantiate(enemyPrefabs[enemyIndex], spawnPointsHard[spawnIndex].position, Quaternion.identity);
                 enemyList.Add(enemy);
-                enemyCount++;
             }
         }
     }
@@ -261,6 +275,51 @@ public class WaveSpawner : MonoBehaviour
         else
         {
             isPlayingGame = false;
+        }
+    }
+
+    public void NextWaveEnemyCounts()
+    {
+        // EASY
+        if (currentDifficultyType == Difficulty.Easy && wave == 1 && enemyCount == 15)
+        {
+            nextWaveButton.SetActive(true);
+        }
+        else if (currentDifficultyType == Difficulty.Easy && wave == 2 && enemyCount == 9)
+        {
+            nextWaveButton.SetActive(true);
+        }
+        else if (currentDifficultyType == Difficulty.Easy && wave == 3 && enemyCount == 0)
+        {
+            gameWon = true;
+        }
+
+        // MEDIUM
+        if (currentDifficultyType == Difficulty.Medium && wave == 1 && enemyCount == 21)
+        {
+            nextWaveButton.SetActive(true);
+        }
+        else if (currentDifficultyType == Difficulty.Medium && wave == 2 && enemyCount == 12)
+        {
+            nextWaveButton.SetActive(true);
+        }
+        else if (currentDifficultyType == Difficulty.Medium && wave == 3 && enemyCount == 0)
+        {
+            gameWon = true;
+        }
+
+        // HARD
+        if (currentDifficultyType == Difficulty.Hard && wave == 1 && enemyCount == 29)
+        {
+            nextWaveButton.SetActive(true);
+        }
+        else if (currentDifficultyType == Difficulty.Hard && wave == 2 && enemyCount == 17)
+        {
+            nextWaveButton.SetActive(true);
+        }
+        else if (currentDifficultyType == Difficulty.Hard && wave == 3 && enemyCount == 0)
+        {
+            gameWon = true;
         }
     }
 
