@@ -11,7 +11,7 @@ public class WaveSpawner : MonoBehaviour
     public Transform[] spawnPointsEasy, spawnPointsMedium, spawnPointsHard;
     public List<GameObject> enemyList;
     public GameObject nextWaveButton;
-    public GameObject[] mainTree;
+    public GameObject mainTree;
 
     public int wave = 0;
     private int maxWaves = 3;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyNavMeshMovement : MonoBehaviour
+public class EnemyNavMeshMovement : MonoBehaviour, IDamageable
 {
     public enum enemyType { normal, big, projectile }
     public enemyType currentEnemyType;
@@ -50,7 +50,7 @@ public class EnemyNavMeshMovement : MonoBehaviour
             waveSpawner = GameObject.Find("WaveSpawner").GetComponent<WaveSpawner>();
         }
 
-        target = waveSpawner.mainTree[(int) waveSpawner.currentDifficultyType].transform;
+        target = waveSpawner.mainTree.transform;
         nav.SetDestination(target.position);
     }
 
@@ -58,15 +58,15 @@ public class EnemyNavMeshMovement : MonoBehaviour
     {
         if (waveSpawner.currentDifficultyType == WaveSpawner.Difficulty.Easy)
         {
-            target = waveSpawner.mainTree[0].GetComponent<Transform>();
+            target = waveSpawner.mainTree.transform;
         }
         if (waveSpawner.currentDifficultyType == WaveSpawner.Difficulty.Medium)
         {
-            target = waveSpawner.mainTree[1].GetComponent<Transform>();
+            target = waveSpawner.mainTree.transform;
         }
         if (waveSpawner.currentDifficultyType == WaveSpawner.Difficulty.Hard)
         {
-            target = waveSpawner.mainTree[2].GetComponent<Transform>();
+            target = waveSpawner.mainTree.transform;
         }
 
         if (currentEnemyType == enemyType.normal || currentEnemyType == enemyType.big)
@@ -188,5 +188,15 @@ public class EnemyNavMeshMovement : MonoBehaviour
     public void OnTriggerExit(Collider other)
     {
         enemySpeed = enemyBaseSpeed;
+    }
+    public void TakeDamage(int amount) {
+        health -= amount;
+        if (health <= 0) {
+            Die();
+        }
+    }
+
+    public void Die() {
+        Destroy(gameObject);   
     }
 }

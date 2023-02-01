@@ -1,11 +1,11 @@
-using UnityEditor.Animations;
+
 
 using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
     public Transform center;
-    public GameObject[] mainTree;
+    public GameObject mainTree;
     public float radius = 10f;
     public float zoomSpeed = 5f;
 
@@ -48,15 +48,15 @@ public class CameraMovement : MonoBehaviour
 
         if (waveSpawner.currentDifficultyType == WaveSpawner.Difficulty.Easy)
         {
-            center = mainTree[0].transform;
+            center = mainTree.transform;
         }
         if (waveSpawner.currentDifficultyType == WaveSpawner.Difficulty.Medium)
         {
-            center = mainTree[1].transform;
+            center = mainTree.transform;
         }
         if (waveSpawner.currentDifficultyType == WaveSpawner.Difficulty.Hard)
         {
-            center = mainTree[2].transform;
+            center = mainTree.transform;
         }
     }
 }

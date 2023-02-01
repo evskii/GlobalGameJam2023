@@ -50,6 +50,7 @@ public class TreeCreationController : MonoBehaviour
 
                     cellData.isOccupied = true;
                     cellData.currentOwner = placedTree;
+                    GridController.instance.UpdateGridMesh();
 
                     Destroy(placeholderTree);
                     currentState = CreationState.None;

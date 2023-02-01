@@ -34,6 +34,7 @@ public class GridController : MonoBehaviour
     }
 
     public void GenerateGrid() {
+        
         for (int x = 0; x < gridWidth; x++) {
             for (int z = 0; z < gridHeight; z++) {
                 var cellPos = new Vector3((-gridWidth / 2 + x) * cellScale, 0, (-gridHeight / 2 + z) * cellScale);
@@ -49,6 +50,8 @@ public class GridController : MonoBehaviour
                 boardCellMeshes.Add(cellMesh);
             }
         }
+        
+        UpdateGridMesh();
     }
 
     public void Update() {
@@ -56,15 +59,31 @@ public class GridController : MonoBehaviour
     }
 
     public void UpdateGridMesh() {
+        // Debug.Log("Updating Grid Mesh");
         foreach (var mesh in boardCellMeshes) {
             var cellData = GetCell((int) mesh.transform.position.x, (int) mesh.transform.position.z);
-            if (cellData.isOccupied) {
+            if (cellData.isOccupied && mesh.activeSelf) {
                 mesh.SetActive(false);
+                // Debug.Log("X:" + cellData.x + " Z:" + cellData.z + " Changed to Disabled");
+                continue;
             }
 
-            mesh.GetComponent<MeshRenderer>().material = cellData.canBeOccupied ? gridBase : gridInvalid;
+            var meshRend = mesh.GetComponent<MeshRenderer>();
+            if (cellData.canBeOccupied && meshRend.materials[0] != gridBase) {
+                meshRend.materials[0] = gridBase;
+                // Debug.Log("X:" + cellData.x + " Z:" + cellData.z + " Changed to Base");
+                continue;
+            }
+            
+            if(!cellData.canBeOccupied && meshRend.material !=  gridInvalid) {
+                meshRend.material = gridInvalid;
+                // Debug.Log("X:" + cellData.x + " Z:" + cellData.z + " Changed to Invalid");
+            }
+            
+            //mesh.GetComponent<MeshRenderer>().material = cellData.canBeOccupied ? gridBase : gridInvalid;
             
         }
+        // Debug.Log("Finished Updating Grid Mesh");
     }
 
     private GameObject lastHighlightedCell;

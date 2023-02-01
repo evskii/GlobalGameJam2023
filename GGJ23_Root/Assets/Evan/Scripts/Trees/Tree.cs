@@ -23,6 +23,7 @@ public abstract class Tree : MonoBehaviour, IDamageable
         
     }
     public void TakeDamage(int amount) {
+        currentHealth -= amount;
         if (currentHealth <= 0) {
             Die();
         }
