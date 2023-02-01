@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+
+using Unity.VisualScripting;
+
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -17,6 +20,7 @@ public class EnemyNavMeshMovement : MonoBehaviour, IDamageable
     private float timeRemaining = 1.5f;
     private bool isAttacking;
     private Vector3 targetObject;
+    public GameObject targetObjectReference;
     public Transform hand;
     private float enemyBaseSpeed;
     private WaveSpawner waveSpawner;
@@ -82,9 +86,10 @@ public class EnemyNavMeshMovement : MonoBehaviour, IDamageable
                 Collider[] colliders = Physics.OverlapSphere(transform.position, 2f);
                 foreach (Collider col in colliders)
                 {
-                    if (col.gameObject.CompareTag("Tree"))
+                    if (col.gameObject.CompareTag("Tree") && !targetObjectReference)
                     {
                         targetObject = col.transform.position;
+                        targetObjectReference = col.transform.root.gameObject;
                         canMove = false;
                         isAttacking = true;
                         Vector3 targetDirection = col.transform.position - transform.position;
@@ -159,6 +164,11 @@ public class EnemyNavMeshMovement : MonoBehaviour, IDamageable
                 {
                     GameObject projectile = Instantiate(projectileAxe, hand.position, Quaternion.identity);
                     projectile.GetComponent<Rigidbody>().AddForce((targetObject - transform.position) * 3, ForceMode.Impulse);
+                } else {
+                    if (!targetObjectReference) {
+                        targetObjectReference.GetComponentInParent<IDamageable>().TakeDamage((int)enemyDamage);
+                    }
+                    
                 }
                 timeRemaining = 1.5f;
             }
