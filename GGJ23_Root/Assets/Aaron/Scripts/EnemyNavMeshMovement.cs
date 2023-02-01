@@ -43,7 +43,7 @@ public class EnemyNavMeshMovement : MonoBehaviour, IDamageable
         {
             health = health * 2;
             enemySpeed = enemySpeed / 2;
-            enemyDamage = enemyDamage * 2;
+            enemyDamage = enemyDamage / 2;
             transform.localScale = transform.localScale * 1.5f;
         }
 
@@ -81,10 +81,10 @@ public class EnemyNavMeshMovement : MonoBehaviour, IDamageable
             }
             else
             {
-                Collider[] colliders = Physics.OverlapSphere(transform.position, 2f);
+                Collider[] colliders = Physics.OverlapSphere(transform.position, 2.5f);
                 foreach (Collider col in colliders)
                 {
-                    if (col.gameObject.CompareTag("Tree") && !targetObjectReference)
+                    if (col.gameObject.CompareTag("Tree"))
                     {
                         targetObject = col.transform.position;
                         targetObjectReference = col.transform.root.gameObject;
@@ -160,10 +160,12 @@ public class EnemyNavMeshMovement : MonoBehaviour, IDamageable
             {
                 if (currentEnemyType == enemyType.projectile)
                 {
+                    Vector3 lowerYProj = new Vector3(0, .5f, 0);
                     GameObject projectile = Instantiate(projectileAxe, hand.position, Quaternion.identity);
-                    projectile.GetComponent<Rigidbody>().AddForce((targetObject - transform.position) * 3, ForceMode.Impulse);
+                    projectile.GetComponent<Rigidbody>().AddForce((targetObject - transform.position - lowerYProj) * 3, ForceMode.Impulse);
                 } else {
-                    if (!targetObjectReference) {
+                    if (targetObjectReference) {
+                        Debug.Log("Enemy Take Damage (Melee)");
                         targetObjectReference.GetComponentInParent<IDamageable>().TakeDamage((int)enemyDamage);
                     }
                     
