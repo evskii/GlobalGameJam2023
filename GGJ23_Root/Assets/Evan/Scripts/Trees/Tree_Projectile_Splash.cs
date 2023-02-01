@@ -3,9 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-using Unity.Collections.LowLevel.Unsafe;
-using Unity.Mathematics;
-using Unity.VisualScripting;
 
 using UnityEngine;
 
@@ -40,7 +37,7 @@ public class Tree_Projectile_Splash : Tree
 			targetPos = new Vector3(targetPos.x, 0, targetPos.z);
 
 			if (Time.time >= lastShot + fireRate) {
-				var spawnedProjectile = Instantiate(projectile, firePosition.position, quaternion.identity);
+				var spawnedProjectile = Instantiate(projectile, firePosition.position, Quaternion.identity);
 				spawnedProjectile.GetComponent<Rigidbody>().AddForce((targetPos - firePosition.position) * projectileSpeed, ForceMode.Impulse);
 				lastShot = Time.time;
 			}
