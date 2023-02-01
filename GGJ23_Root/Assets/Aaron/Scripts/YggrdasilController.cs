@@ -7,6 +7,7 @@ public class YggrdasilController : MonoBehaviour, IDamageable
     public int maxHealth;
     public int currentHealth;
     public GameObject loseText;
+    public MeshRenderer mesh;
     public bool isDead;
 
     private void Awake()
@@ -27,6 +28,6 @@ public class YggrdasilController : MonoBehaviour, IDamageable
     {
         isDead = true;
         loseText.SetActive(true);
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        mesh.enabled = false;
     }
 }

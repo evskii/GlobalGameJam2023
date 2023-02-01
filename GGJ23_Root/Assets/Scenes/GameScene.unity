@@ -4414,6 +4414,7 @@ MonoBehaviour:
   maxHealth: 5
   currentHealth: 0
   loseText: {fileID: 235273945}
+  mesh: {fileID: 1087454527}
   isDead: 0
 --- !u!1 &778574274
 GameObject:
