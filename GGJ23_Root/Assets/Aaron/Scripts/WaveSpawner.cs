@@ -25,6 +25,13 @@ public class WaveSpawner : MonoBehaviour
         canSpawnWave = false;
     }
 
+    [ContextMenu("Test Start Easy")]
+    public void TestStart() {
+        SetDifficulty(0);
+        IsGameRunning(true);
+        StartNextWave();
+    }
+
     public void Update()
     {
         if (wave >= maxWaves)

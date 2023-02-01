@@ -1,3 +1,5 @@
+using UnityEditor.Animations;
+
 using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
@@ -21,6 +23,14 @@ public class CameraMovement : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetMouseButtonDown(1)) {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
+        if (Input.GetMouseButtonUp(1)) {
+            Cursor.lockState = CursorLockMode.None;
+        }
+        
         if (Input.GetMouseButton(1))
         {
             mouseX += Input.GetAxis("Mouse X");

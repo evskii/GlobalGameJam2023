@@ -16,6 +16,7 @@ public class GridController : MonoBehaviour
 
 
     public int gridWidth, gridHeight;
+    public float cellScale = 1;
     public List<GridCell> boardCells = new List<GridCell>();
     public List<GameObject> boardCellMeshes = new List<GameObject>();
     public GameObject gridCellMesh;
@@ -35,7 +36,7 @@ public class GridController : MonoBehaviour
     public void GenerateGrid() {
         for (int x = 0; x < gridWidth; x++) {
             for (int z = 0; z < gridHeight; z++) {
-                var cellPos = new Vector3(-gridWidth / 2 + x, 0, -gridHeight / 2 + z);
+                var cellPos = new Vector3((-gridWidth / 2 + x) * cellScale, 0, (-gridHeight / 2 + z) * cellScale);
                 GridCell newCell = new GridCell((int)cellPos.x, (int)cellPos.z);
                 boardCells.Add(newCell);
                 
@@ -44,13 +45,14 @@ public class GridController : MonoBehaviour
                 var cellMesh = Instantiate(gridCellMesh,gridCellMeshParent);
                 cellMesh.transform.localPosition = new Vector3((int)cellPos.x, 0, (int)cellPos.z);
                 cellMesh.GetComponent<MeshRenderer>().material = gridBase;
+                cellMesh.transform.localScale *= cellScale;
                 boardCellMeshes.Add(cellMesh);
             }
         }
     }
 
     public void Update() {
-        UpdateGridMesh();
+        // UpdateGridMesh();
     }
 
     public void UpdateGridMesh() {

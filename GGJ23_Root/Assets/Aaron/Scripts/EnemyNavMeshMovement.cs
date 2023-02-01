@@ -50,6 +50,7 @@ public class EnemyNavMeshMovement : MonoBehaviour
             waveSpawner = GameObject.Find("WaveSpawner").GetComponent<WaveSpawner>();
         }
 
+        target = waveSpawner.mainTree[(int) waveSpawner.currentDifficultyType].transform;
         nav.SetDestination(target.position);
     }
 
