@@ -22,6 +22,8 @@ public class EnemyNavMeshMovement : MonoBehaviour, IDamageable
     public Transform hand;
     private float enemyBaseSpeed;
     private WaveSpawner waveSpawner;
+    public YggrdasilController yggrdasil;
+    public GameObject bigTree;
 
     UnityEngine.AI.NavMeshAgent nav;
 
@@ -52,12 +54,24 @@ public class EnemyNavMeshMovement : MonoBehaviour, IDamageable
             waveSpawner = GameObject.Find("WaveSpawner").GetComponent<WaveSpawner>();
         }
 
+        if (yggrdasil == null)
+        {
+            yggrdasil = GameObject.Find("Yggrdasil").GetComponent<YggrdasilController>();
+        }
+
+        bigTree = GameObject.Find("Yggrdasil");
+
         target = waveSpawner.mainTree.transform;
         nav.SetDestination(target.position);
     }
 
     void Update()
     {
+        if (targetObjectReference == null)
+        {
+            targetObjectReference = bigTree;
+        }
+
         if (waveSpawner.currentDifficultyType == WaveSpawner.Difficulty.Easy)
         {
             target = waveSpawner.mainTree.transform;
@@ -166,9 +180,16 @@ public class EnemyNavMeshMovement : MonoBehaviour, IDamageable
                 } else {
                     if (targetObjectReference) {
                         Debug.Log("Enemy Take Damage (Melee)");
-                        targetObjectReference.GetComponentInParent<IDamageable>().TakeDamage((int)enemyDamage);
-                    }
-                    
+                        if (targetObjectReference.TryGetComponent(out IDamageable damage))
+                        {
+                            damage.TakeDamage((int)enemyDamage);
+                        }
+                        else
+                        {
+                            yggrdasil.TakeDamage((int)enemyDamage);
+                        }
+                        
+                    }                 
                 }
                 timeRemaining = 1.5f;
             }
@@ -176,6 +197,13 @@ public class EnemyNavMeshMovement : MonoBehaviour, IDamageable
         else
         {
             timeRemaining = 1.5f;
+        }
+
+        if (yggrdasil.isDead)
+        {
+            enemySpeed = 0;
+            isAttacking = false;
+            gameObject.GetComponent<Animator>().SetBool("Dance", true);
         }
     }
 

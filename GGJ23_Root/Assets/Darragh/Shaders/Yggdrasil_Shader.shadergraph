@@ -303,7 +303,7 @@
         "color": {
             "r": 3.4415907859802248,
             "g": 2.5947072505950929,
-            "b": 0.09009400010108948,
+            "b": 0.03603760525584221,
             "a": 0.0
         },
         "mode": 1
@@ -1267,7 +1267,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "Power",
     "m_StageCapability": 3,
-    "m_Value": 3.0,
+    "m_Value": 0.800000011920929,
     "m_DefaultValue": 1.0,
     "m_Labels": []
 }

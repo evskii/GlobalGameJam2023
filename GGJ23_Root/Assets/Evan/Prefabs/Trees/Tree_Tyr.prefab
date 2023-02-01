@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 4327866875664975036}
   - component: {fileID: 4327866875664975035}
   m_Layer: 0
-  m_Name: Tree_Projectile_Direct
+  m_Name: Tree_Tyr
   m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

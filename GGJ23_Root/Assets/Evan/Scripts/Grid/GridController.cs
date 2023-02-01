@@ -34,6 +34,13 @@ public class GridController : MonoBehaviour
     }
 
     public void GenerateGrid() {
+        foreach (Transform cell in gridCellMeshParent) {
+            Destroy(cell.gameObject);
+        }
+        boardCellMeshes.Clear();
+        pathCellPositions.Clear();
+        boardCells.Clear();
+        
         //Find our path cells in scene and store their positions
         var pathCells = FindObjectsOfType<Transform>().Where(cell => cell.transform.CompareTag("Path")).ToList();
         foreach (var path in pathCells) {

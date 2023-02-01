@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 4963663014502618460}
   - component: {fileID: 4963663014502618467}
   m_Layer: 0
-  m_Name: Tree_Projectile_Splash
+  m_Name: Odin_Tree
   m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
