@@ -16,6 +16,7 @@ public class EnemyNavMeshMovement : MonoBehaviour, IDamageable
     public float enemySpeed = 3.5f;
     public float enemyDamage = 1f;
     public GameObject projectileAxe;
+    public int throwDistance;
 
     private float timeRemaining = 1.5f;
     private bool isAttacking;
@@ -111,7 +112,7 @@ public class EnemyNavMeshMovement : MonoBehaviour, IDamageable
 
         if (currentEnemyType == enemyType.projectile)
         {
-            if ((target.position - this.transform.position).sqrMagnitude < 4 * 2)
+            if ((target.position - this.transform.position).sqrMagnitude < throwDistance * 2)
             {
                 isAttacking = true;
                 gameObject.GetComponent<Animator>().SetBool("Attack", true);
