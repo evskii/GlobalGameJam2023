@@ -229,11 +229,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentEnemyType: 2
   target: {fileID: 0}
-  health: 60
+  health: 15
   enemySpeed: 3.5
   enemyDamage: 1
   projectileAxe: {fileID: 8179210633950513993, guid: fd2ad30028029ab43aa323e41a2ea402,
     type: 3}
+  throwDistance: 0
+  targetObjectReference: {fileID: 0}
   hand: {fileID: 5337561865655283122}
   canMove: 1
   originSpawn: {x: 0, y: 0, z: 0}

@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71b1cc115afe95e45ae9b1fff6d96222, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 30
   currentHealth: 0
   DeathEvent:
     m_PersistentCalls:
@@ -270,7 +270,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  fireRange: 4
+  fireRange: 5
   projectile: {fileID: 8379199782105987799, guid: 81d95e0b97baee34399cf3483b31ffb2,
     type: 3}
   firePosition: {fileID: 4963663015367820449}

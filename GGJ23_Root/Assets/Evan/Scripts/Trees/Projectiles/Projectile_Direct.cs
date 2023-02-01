@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Projectile_Direct : MonoBehaviour
 {
+	public int damage = 5;
 
 	private void OnTriggerEnter(Collider other) {
 		if (other.CompareTag("Tree")) {
@@ -12,7 +13,7 @@ public class Projectile_Direct : MonoBehaviour
 		}
 		
 		if (other.CompareTag("Enemy")) {
-			other.GetComponent<IDamageable>().TakeDamage(10);
+			other.GetComponent<IDamageable>().TakeDamage(damage);
 		}
 		Destroy(gameObject);
 	}

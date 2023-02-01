@@ -270,7 +270,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  fireRange: 2
+  fireRange: 4.5
   projectile: {fileID: 8379199782105987799, guid: c66434f878152274592ef1b68d711748,
     type: 3}
   firePosition: {fileID: 4327866876427425089}

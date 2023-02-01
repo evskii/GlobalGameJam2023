@@ -127,6 +127,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0158eff9a2f08084eb64c51a29ab59c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageMin: 3
-  damageMax: 10
-  damageRadius: 3
+  damageMin: 4
+  damageMax: 7
+  damageRadius: 1
