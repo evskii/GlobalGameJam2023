@@ -19,6 +19,8 @@ public class CameraMovement : MonoBehaviour
         {
             waveSpawner = GameObject.Find("WaveSpawner").GetComponent<WaveSpawner>();
         }
+
+        center = mainTree.transform;
     }
 
     private void Update()
@@ -44,19 +46,6 @@ public class CameraMovement : MonoBehaviour
             cameraPos.y = Mathf.Clamp(cameraPos.y, 4f, float.MaxValue);
             transform.position = cameraPos;
             transform.LookAt(center);
-        }
-
-        if (waveSpawner.currentDifficultyType == WaveSpawner.Difficulty.Easy)
-        {
-            center = mainTree.transform;
-        }
-        if (waveSpawner.currentDifficultyType == WaveSpawner.Difficulty.Medium)
-        {
-            center = mainTree.transform;
-        }
-        if (waveSpawner.currentDifficultyType == WaveSpawner.Difficulty.Hard)
-        {
-            center = mainTree.transform;
         }
     }
 }
