@@ -16,9 +16,10 @@ public class GridController : MonoBehaviour
 
 
     public int gridWidth, gridHeight;
-    public float cellScale = 1;
+    public int cellScale = 1;
     public List<GridCell> boardCells = new List<GridCell>();
     public List<GameObject> boardCellMeshes = new List<GameObject>();
+    public List<Vector3> pathCellPositions = new List<Vector3>();
     public GameObject gridCellMesh;
     public Transform gridCellMeshParent;
 
@@ -26,7 +27,6 @@ public class GridController : MonoBehaviour
     public Material gridInvalid;
     public Material gridHighlight;
 
-    public Vector3[] pathCells; //Should be changed to something else but fuck it
 
     private void Start() {
         GenerateGrid();
@@ -34,20 +34,49 @@ public class GridController : MonoBehaviour
     }
 
     public void GenerateGrid() {
-        
-        for (int x = 0; x < gridWidth; x++) {
-            for (int z = 0; z < gridHeight; z++) {
-                var cellPos = new Vector3((-gridWidth / 2 + x) * cellScale, 0, (-gridHeight / 2 + z) * cellScale);
+        //Find our path cells in scene and store their positions
+        var pathCells = FindObjectsOfType<Transform>().Where(cell => cell.transform.CompareTag("Path")).ToList();
+        foreach (var path in pathCells) {
+            pathCellPositions.Add(new Vector3(path.position.x, 0, path.position.z));
+            
+            // var bleh = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            // bleh.transform.position = new Vector3(path.position.x, 0, path.position.z);
+            
+        }
+
+        for (int x = 0; x < gridWidth; x += cellScale) {
+            for (int z = 0; z < gridHeight; z += cellScale) {
+                var cellPos = new Vector3((-gridWidth / 2 + x), 0, (-gridHeight / 2 + z));
                 GridCell newCell = new GridCell((int)cellPos.x, (int)cellPos.z);
                 boardCells.Add(newCell);
+
+                newCell.canBeOccupied = false;
                 
-                newCell.canBeOccupied = !pathCells.Contains(new Vector3((int) cellPos.x, 0, (int) cellPos.z));
-                
-                var cellMesh = Instantiate(gridCellMesh,gridCellMeshParent);
+                var cellMesh = Instantiate(gridCellMesh, gridCellMeshParent);
+                cellMesh.transform.localScale *= cellScale;
                 cellMesh.transform.localPosition = new Vector3((int)cellPos.x, 0, (int)cellPos.z);
                 cellMesh.GetComponent<MeshRenderer>().material = gridBase;
-                cellMesh.transform.localScale *= cellScale;
                 boardCellMeshes.Add(cellMesh);
+                cellMesh.SetActive(false);
+            }
+        }
+
+        foreach (var pathTile in pathCells) {
+            for (int x = -1; x < 2; x++) {
+                for (int z = -1; z < 3; z++) {
+                    Vector3 posToCheck = new Vector3(pathTile.position.x + (x * cellScale), 0, pathTile.position.z + (z * cellScale));
+                    if (DoesCellExist((int)posToCheck.x, (int)posToCheck.z)) {
+                        var cellData = GetCell((int)posToCheck.x, (int)posToCheck.z);
+
+                        if (pathCellPositions.Contains(posToCheck)) {
+                            continue;
+                        }
+                    
+                        cellData.canBeOccupied = true;
+                        GetCellMesh(cellData.x, cellData.z).SetActive(true);
+                    }
+                    
+                }
             }
         }
         
@@ -77,6 +106,7 @@ public class GridController : MonoBehaviour
             
             if(!cellData.canBeOccupied && meshRend.material !=  gridInvalid) {
                 meshRend.material = gridInvalid;
+                meshRend.gameObject.SetActive(false);
                 // Debug.Log("X:" + cellData.x + " Z:" + cellData.z + " Changed to Invalid");
             }
             
@@ -106,6 +136,15 @@ public class GridController : MonoBehaviour
             return new GridCell(0, 0);
         }
         return matchedCells[0];
+    }
+
+    public bool DoesCellExist(int x, int z) {
+        foreach (var cell in boardCells) {
+            if (cell.x == x && cell.z == z) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public GameObject GetCellMesh(int x, int z) {

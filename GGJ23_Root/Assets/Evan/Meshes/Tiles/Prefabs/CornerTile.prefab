@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2511499399090789882}
   m_Layer: 0
   m_Name: CornerTile
-  m_TagString: Untagged
+  m_TagString: Path
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
