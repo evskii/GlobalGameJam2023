@@ -4375,7 +4375,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 775345461}
-  - component: {fileID: 775345462}
   m_Layer: 0
   m_Name: Yggrdasil
   m_TagString: Tree
@@ -4399,22 +4398,6 @@ Transform:
   m_Father: {fileID: 1967128750}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &775345462
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 775345460}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b682b74434d9dc41a1702e511fab126, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 5
-  currentHealth: 0
-  loseText: {fileID: 235273945}
-  isDead: 0
 --- !u!1 &778574274
 GameObject:
   m_ObjectHideFlags: 0
@@ -5971,9 +5954,10 @@ GameObject:
   - component: {fileID: 1087454528}
   - component: {fileID: 1087454527}
   - component: {fileID: 1087454526}
+  - component: {fileID: 1087454529}
   m_Layer: 0
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6057,6 +6041,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1087454524}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1087454529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087454524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b682b74434d9dc41a1702e511fab126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  currentHealth: 0
+  loseText: {fileID: 235273945}
+  isDead: 0
 --- !u!1 &1125912998
 GameObject:
   m_ObjectHideFlags: 0
@@ -8221,19 +8221,13 @@ MonoBehaviour:
   gridHeight: 30
   cellScale: 1
   boardCellMeshes: []
+  pathCellPositions: []
   gridCellMesh: {fileID: 1043630645161494726, guid: ddc985a448f7d9c4592b31434dec3a84,
     type: 3}
   gridCellMeshParent: {fileID: 77355902}
   gridBase: {fileID: 2100000, guid: 6ef71696a9bc9bc4bb614778d4b78696, type: 2}
   gridInvalid: {fileID: 2100000, guid: c5723fec15670a546af36f19c08f72c7, type: 2}
   gridHighlight: {fileID: 2100000, guid: 68f0c98a1bd21de469163be4c368c77b, type: 2}
-  pathCells:
-  - {x: 0, y: 0, z: 0}
-  - {x: 1, y: 0, z: 0}
-  - {x: 2, y: 0, z: 0}
-  - {x: 3, y: 0, z: 0}
-  - {x: 3, y: 0, z: 1}
-  - {x: 3, y: 0, z: 2}
 --- !u!4 &1781584757
 Transform:
   m_ObjectHideFlags: 0

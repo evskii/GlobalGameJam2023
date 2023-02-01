@@ -27,5 +27,6 @@ public class YggrdasilController : MonoBehaviour, IDamageable
     {
         isDead = true;
         loseText.SetActive(true);
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
     }
 }
