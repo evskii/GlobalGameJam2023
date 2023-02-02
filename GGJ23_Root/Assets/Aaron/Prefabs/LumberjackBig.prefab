@@ -813,7 +813,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentEnemyType: 1
   target: {fileID: 0}
+<<<<<<< HEAD
+  health: 35
+=======
   health: 75
+>>>>>>> 980d75b666fd36951ae8b7a8ded4d26dae2a7f12
   enemySpeed: 1.5
   enemyDamage: 80
   projectileAxe: {fileID: 8179210633950513993, guid: fd2ad30028029ab43aa323e41a2ea402,
