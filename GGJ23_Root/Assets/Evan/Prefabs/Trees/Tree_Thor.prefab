@@ -304,7 +304,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   fireRange: 3.5
-  firePosition: {fileID: 7938764311073660694}
+  firePosition: {fileID: 6979952689818876546}
   damageRate: 0.5
   damage: 2
   totalSteps: 10
@@ -577,6 +577,12 @@ PrefabInstance:
 --- !u!4 &2537857739581700445 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6005651994147676590, guid: e1fa9c41663cd21449e6aeb38952e0c8,
+    type: 3}
+  m_PrefabInstance: {fileID: 8097494671509936371}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6979952689818876546 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1206350610683159153, guid: e1fa9c41663cd21449e6aeb38952e0c8,
     type: 3}
   m_PrefabInstance: {fileID: 8097494671509936371}
   m_PrefabAsset: {fileID: 0}

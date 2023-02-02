@@ -274,7 +274,7 @@ MonoBehaviour:
   fireRange: 4.5
   projectile: {fileID: 8379199782105987799, guid: c66434f878152274592ef1b68d711748,
     type: 3}
-  firePosition: {fileID: 4327866876427425089}
+  firePosition: {fileID: 3759917152834869949}
   fireRate: 1
   projectileSpeed: 5
   showDebug: 1
@@ -442,6 +442,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a124c7b07fafe354ba44c0d671b80177, type: 3}
+--- !u!4 &3759917152834869949 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9181530462020195777, guid: a124c7b07fafe354ba44c0d671b80177,
+    type: 3}
+  m_PrefabInstance: {fileID: 5424218471145312124}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8631260203407333730 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4363658843649332766, guid: a124c7b07fafe354ba44c0d671b80177,

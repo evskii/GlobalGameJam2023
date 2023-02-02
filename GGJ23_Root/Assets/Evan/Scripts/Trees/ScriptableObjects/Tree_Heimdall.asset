@@ -15,5 +15,5 @@ MonoBehaviour:
   treePrefab: {fileID: 7413785677488401660, guid: 4c28dbd2f2a439943877dc713e6c977e,
     type: 3}
   treeName: Heimdall Tree
-  lifeEssenceCost: 500
+  lifeEssenceCost: 600
   thumbnailSprite: {fileID: 0}
