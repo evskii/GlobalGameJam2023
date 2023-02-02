@@ -15,11 +15,6 @@ public class CameraMovement : MonoBehaviour
 
     public void Start()
     {
-        if (waveSpawner == null)
-        {
-            waveSpawner = GameObject.Find("WaveSpawner").GetComponent<WaveSpawner>();
-        }
-
         center = mainTree.transform;
     }
 

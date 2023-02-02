@@ -16,11 +16,13 @@ public class WaveSpawner : MonoBehaviour
 
     public int wave = 0;
     private int maxWaves = 3;
-    private int enemyCount;
+    public int enemyCount;
 
     public bool canSpawnWave = false;
     public bool isPlayingGame = false;
     private bool gameWon = false;
+
+    public int[] giveCurrency;
 
     private void Start()
     {
@@ -236,6 +238,7 @@ public class WaveSpawner : MonoBehaviour
             ////////// HARD //////////
 
             StartCoroutine(CanSpawnWave());
+            GetCurrency();
         }
     }
 
@@ -320,6 +323,14 @@ public class WaveSpawner : MonoBehaviour
         else if (currentDifficultyType == Difficulty.Hard && wave == 3 && enemyCount == 0)
         {
             gameWon = true;
+        }
+    }
+
+    public void GetCurrency()
+    {
+        if (wave != 1)
+        {
+            PlayerInventory.instance.UpdateLifeEssenceBalance(giveCurrency[(int)currentDifficultyType]);
         }
     }
 

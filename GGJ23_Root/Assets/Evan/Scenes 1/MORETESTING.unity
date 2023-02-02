@@ -1625,6 +1625,7 @@ MonoBehaviour:
   treeMenu: {fileID: 1804941681}
   treeMenuOpenButton: {fileID: 294134264}
   treeCreationController: {fileID: 1128030704}
+  allTreeUiObjects: []
 --- !u!1 &189244215
 GameObject:
   m_ObjectHideFlags: 0
@@ -2669,8 +2670,10 @@ MonoBehaviour:
   mainTree: {fileID: 276865292}
   winText: {fileID: 0}
   wave: 0
+  enemyCount: 0
   canSpawnWave: 0
   isPlayingGame: 1
+  giveCurrency: 
 --- !u!4 &333723730
 Transform:
   m_ObjectHideFlags: 0
