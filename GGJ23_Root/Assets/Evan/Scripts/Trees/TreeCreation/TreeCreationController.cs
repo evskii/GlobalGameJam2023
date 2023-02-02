@@ -51,6 +51,8 @@ public class TreeCreationController : MonoBehaviour
                 if (!cellData.isOccupied && cellData.canBeOccupied) {
                     var placedTree = Instantiate(treePrefab, gridMousePosWorld, Quaternion.identity);
                     placedTree.GetComponent<TreeController>().enabled = true;
+                    placedTree.GetComponent<LerpLocalScale>().enabled = true;
+                    placedTree.GetComponent<LerpLocalScale>().LerpToFinal();
 
                     cellData.isOccupied = true;
                     cellData.currentOwner = placedTree;
