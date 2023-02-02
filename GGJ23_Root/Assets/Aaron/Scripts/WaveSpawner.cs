@@ -16,7 +16,7 @@ public class WaveSpawner : MonoBehaviour
 
     public int wave = 0;
     private int maxWaves = 3;
-    private int enemyCount;
+    public int enemyCount;
 
     public bool canSpawnWave = false;
     public bool isPlayingGame = false;
