@@ -20,10 +20,16 @@ public class PlayerInventory : MonoBehaviour
 	public TMP_Text lifeEssenceValueText;
 
 	private void Start() {
-		lifeEssence = 0;
-		UpdateLifeEssenceBalance(startCurrency);
+		// lifeEssence = 0;
+		// UpdateLifeEssenceBalance(startCurrency);
 	}
 
+
+	public void SetLifeEssenceBalance(int amount) {
+		lifeEssence = amount;
+		lifeEssence = lifeEssence <= 0 ? 0 : lifeEssence;
+		lifeEssenceValueText.text = lifeEssence.ToString();
+	}
 
 	public int GetLifeEssenceBalance() {
 		return lifeEssence;

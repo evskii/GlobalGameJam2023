@@ -15,5 +15,5 @@ MonoBehaviour:
   treePrefab: {fileID: 146308043963769085, guid: c6b2defa5abe72a4e9f2ce69794557eb,
     type: 3}
   treeName: Hel Tree
-  lifeEssenceCost: 1000
-  thumbnailSprite: {fileID: 0}
+  lifeEssenceCost: 450
+  thumbnailSprite: {fileID: 21300000, guid: ae23db0b9e86f6847aa6ef31d7eb94ea, type: 3}

@@ -286,6 +286,7 @@ public class WaveSpawner : MonoBehaviour
 
     public void NextWaveEnemyCounts()
     {
+        Debug.Log(enemyCount);
         // EASY
         if (currentDifficultyType == Difficulty.Easy && wave == 1 && enemyCount == 15)
         {

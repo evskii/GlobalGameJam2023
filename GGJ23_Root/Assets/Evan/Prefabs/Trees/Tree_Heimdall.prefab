@@ -139,13 +139,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cd1618737b56cb46b34ac3aa3f6ddc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 50
   currentHealth: 0
   DeathEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7413785677488401660}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   attackRange: 3
-  attackRate: 5
+  attackRate: 6
   showDebug: 1
 --- !u!114 &6551793206917178958
 MonoBehaviour:

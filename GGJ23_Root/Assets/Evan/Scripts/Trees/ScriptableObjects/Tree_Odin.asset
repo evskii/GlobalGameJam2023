@@ -15,5 +15,5 @@ MonoBehaviour:
   treePrefab: {fileID: 4963663014502618458, guid: a6e9ad17233524f4d9c128a6d25f4f80,
     type: 3}
   treeName: Odin Tree
-  lifeEssenceCost: 500
-  thumbnailSprite: {fileID: 0}
+  lifeEssenceCost: 350
+  thumbnailSprite: {fileID: 21300000, guid: 434ac00c876050c4390ce5543e0b54ed, type: 3}

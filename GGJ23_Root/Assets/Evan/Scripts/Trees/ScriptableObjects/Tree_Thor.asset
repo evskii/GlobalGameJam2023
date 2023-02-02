@@ -15,5 +15,5 @@ MonoBehaviour:
   treePrefab: {fileID: 7938764311366340333, guid: 43a2fa38923f53744b49f5c1af77ca90,
     type: 3}
   treeName: Thor Tree
-  lifeEssenceCost: 100
-  thumbnailSprite: {fileID: 0}
+  lifeEssenceCost: 400
+  thumbnailSprite: {fileID: 21300000, guid: f4e1d6fbad227824c9c6f275ae7f218b, type: 3}
