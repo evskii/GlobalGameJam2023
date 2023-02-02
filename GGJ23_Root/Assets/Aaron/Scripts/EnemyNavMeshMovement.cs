@@ -231,10 +231,16 @@ public class EnemyNavMeshMovement : MonoBehaviour, IDamageable
         health -= amount;
         if (health <= 0) {
             Die();
+            waveSpawner.enemyCount--;
         }
     }
 
     public void Die() {
-        Destroy(gameObject);   
+        gameObject.GetComponent<Animator>().SetBool("Death", true);
+        gameObject.GetComponent<NavMeshAgent>().enabled = false;
+        transform.gameObject.tag = "Untagged";
+        //gameObject.GetComponent<Collider>().enabled = false;
+        gameObject.GetComponent<Rigidbody>().isKinematic = false;
+        gameObject.GetComponent<EnemyNavMeshMovement>().enabled = false;
     }
 }
