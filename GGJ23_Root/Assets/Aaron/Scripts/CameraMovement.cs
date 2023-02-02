@@ -11,13 +11,13 @@ public class CameraMovement : MonoBehaviour
 
     private float mouseX = 0f;
     private float mouseY = 0f;
-    private WaveSpawner waveSpawner;
+    public WaveSpawner waveSpawner;
 
     public void Start()
     {
         if (waveSpawner == null)
         {
-            waveSpawner = GameObject.Find("WaveSpawner").GetComponent<WaveSpawner>();
+            Debug.Log("WaveSpawner is not referenced in CameraMovement.cs");
         }
 
         center = mainTree.transform;

@@ -20,6 +20,6 @@ public class TreeUIObject : MonoBehaviour
     }
 
     public void TreePicked() {
-        GetComponentInParent<TreePickerController>().PickTree(myTree.treePrefab);
+        GetComponentInParent<TreePickerController>().PickTree(myTree);
     }
 }
