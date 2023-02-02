@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cd1618737b56cb46b34ac3aa3f6ddc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 50
   currentHealth: 0
   DeathEvent:
     m_PersistentCalls:
@@ -157,7 +157,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   attackRange: 3
-  attackRate: 5
+  attackRate: 6
   showDebug: 1
 --- !u!114 &6551793206917178958
 MonoBehaviour:

@@ -16,4 +16,4 @@ MonoBehaviour:
     type: 3}
   treeName: Heimdall Tree
   lifeEssenceCost: 600
-  thumbnailSprite: {fileID: 0}
+  thumbnailSprite: {fileID: 21300000, guid: 41ea16e743e8cc94091a263e1c22cd03, type: 3}

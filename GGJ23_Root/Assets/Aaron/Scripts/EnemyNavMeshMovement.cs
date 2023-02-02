@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -25,6 +27,8 @@ public class EnemyNavMeshMovement : MonoBehaviour, IDamageable
     public YggrdasilController yggrdasil;
     public GameObject bigTree;
 
+    private bool attackingYggdy = false;
+    
     UnityEngine.AI.NavMeshAgent nav;
 
     [HideInInspector]
@@ -134,8 +138,8 @@ public class EnemyNavMeshMovement : MonoBehaviour, IDamageable
                 Collider[] colliders = Physics.OverlapSphere(transform.position, 4f);
                 foreach (Collider col in colliders)
                 {
-                    if (col.gameObject.CompareTag("Tree"))
-                    {
+                    if (col.gameObject.CompareTag("Tree")) {
+                        attackingYggdy = col.gameObject.name == "YggrdasilModel_OLD";
                         targetObject = col.transform.position;
                         canMove = false;
                         isAttacking = true;
@@ -177,6 +181,9 @@ public class EnemyNavMeshMovement : MonoBehaviour, IDamageable
                     Vector3 lowerYProj = new Vector3(0, .5f, 0);
                     GameObject projectile = Instantiate(projectileAxe, hand.position, Quaternion.identity);
                     projectile.GetComponent<Rigidbody>().AddForce((targetObject - transform.position - lowerYProj) * 3, ForceMode.Impulse);
+                    if (attackingYggdy) {
+                        Die();
+                    }
                 } else {
                     if (targetObjectReference) {
                         Debug.Log("Enemy Take Damage (Melee)");
@@ -187,6 +194,7 @@ public class EnemyNavMeshMovement : MonoBehaviour, IDamageable
                         else
                         {
                             yggrdasil.TakeDamage((int)enemyDamage);
+                            Die();
                         }
                         
                     }                 
@@ -231,11 +239,12 @@ public class EnemyNavMeshMovement : MonoBehaviour, IDamageable
         health -= amount;
         if (health <= 0) {
             Die();
-            waveSpawner.enemyCount--;
+            
         }
     }
 
     public void Die() {
+        waveSpawner.enemyCount--;
         gameObject.GetComponent<Animator>().SetBool("Death", true);
         gameObject.GetComponent<NavMeshAgent>().enabled = false;
         transform.gameObject.tag = "Untagged";

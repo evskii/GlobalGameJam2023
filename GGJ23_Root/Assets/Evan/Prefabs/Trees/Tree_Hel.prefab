@@ -255,7 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1494aa9f41929c64682fa4adb1aff50e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 60
   currentHealth: 0
   DeathEvent:
     m_PersistentCalls:
@@ -274,8 +274,8 @@ MonoBehaviour:
         m_CallState: 2
   fireRange: 4
   damageRange: 1.2
-  damage: 3
-  damageRate: 0.75
+  damage: 20
+  damageRate: 1
   fireParticle: {fileID: 5801153043585201150}
   showDebug: 1
 --- !u!114 &491056274

@@ -23,9 +23,11 @@ public class YggrdasilController : MonoBehaviour, IDamageable
         healthSlider.GetComponent<Slider>().value = currentHealth;
     }
 
+    
     public void TakeDamage(int amount)
     {
-        currentHealth -= amount;
+        // currentHealth -= amount;
+        currentHealth--;
         if (currentHealth <= 0)
         {
             Die();

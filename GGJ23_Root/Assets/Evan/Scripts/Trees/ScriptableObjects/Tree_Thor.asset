@@ -16,4 +16,4 @@ MonoBehaviour:
     type: 3}
   treeName: Thor Tree
   lifeEssenceCost: 400
-  thumbnailSprite: {fileID: 0}
+  thumbnailSprite: {fileID: 21300000, guid: f4e1d6fbad227824c9c6f275ae7f218b, type: 3}

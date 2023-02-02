@@ -15,5 +15,5 @@ MonoBehaviour:
   treePrefab: {fileID: 4327866875664975034, guid: d83b4adde2d8ade408f0b681a60a5dc3,
     type: 3}
   treeName: Tyr Tree
-  lifeEssenceCost: 100
-  thumbnailSprite: {fileID: 0}
+  lifeEssenceCost: 200
+  thumbnailSprite: {fileID: 21300000, guid: 1f0deaff0baf2204fb4b1732301e47ee, type: 3}

@@ -27,6 +27,8 @@ public class PlayerInventory : MonoBehaviour
 
 	public void SetLifeEssenceBalance(int amount) {
 		lifeEssence = amount;
+		lifeEssence = lifeEssence <= 0 ? 0 : lifeEssence;
+		lifeEssenceValueText.text = lifeEssence.ToString();
 	}
 
 	public int GetLifeEssenceBalance() {

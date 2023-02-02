@@ -335,6 +335,7 @@ MonoBehaviour:
   myTree: {fileID: 11400000, guid: 376312732d759f744b6a8af1156e75dc, type: 2}
   price: {fileID: 177605791}
   name: {fileID: 1078534872}
+  treeImage: {fileID: 232643091}
 --- !u!1 &55239960
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,6 +392,7 @@ MonoBehaviour:
   myTree: {fileID: 11400000, guid: 74684dece8b9dce49bdfc4917b48d659, type: 2}
   price: {fileID: 2143740173}
   name: {fileID: 443335577}
+  treeImage: {fileID: 24875590}
 --- !u!1001 &69830149
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -806,6 +808,7 @@ MonoBehaviour:
   myTree: {fileID: 11400000, guid: fca94c6b8fe1e7b4691d8cef2242e3be, type: 2}
   price: {fileID: 1155808769}
   name: {fileID: 1029579411}
+  treeImage: {fileID: 417288250}
 --- !u!1 &162144169
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,6 +865,7 @@ MonoBehaviour:
   myTree: {fileID: 11400000, guid: 99049ee9a6498cd41921f07abaee27e1, type: 2}
   price: {fileID: 571185146}
   name: {fileID: 1585360521}
+  treeImage: {fileID: 1044092507}
 --- !u!1 &163214454
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,12 +943,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 163214454}
   m_CullTransparentMesh: 1
---- !u!1 &166833090 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6334989711991217998, guid: 7f22d6ee5b4e9ba4d869da2ead1c9dc5,
-    type: 3}
-  m_PrefabInstance: {fileID: 2950712655092059123}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &177605790
 GameObject:
   m_ObjectHideFlags: 0
@@ -4924,6 +4922,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 538121051}
+        m_TargetAssemblyTypeName: PlayerInventory, Assembly-CSharp
+        m_MethodName: SetLifeEssenceBalance
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1000
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &695342693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5621,6 +5631,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 538121051}
+        m_TargetAssemblyTypeName: PlayerInventory, Assembly-CSharp
+        m_MethodName: SetLifeEssenceBalance
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1300
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -6423,6 +6445,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 538121051}
+        m_TargetAssemblyTypeName: PlayerInventory, Assembly-CSharp
+        m_MethodName: SetLifeEssenceBalance
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1500
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -10205,6 +10239,7 @@ MonoBehaviour:
   myTree: {fileID: 11400000, guid: a316f293ed2070a46aa334458bfac645, type: 2}
   price: {fileID: 2008541751}
   name: {fileID: 1792936197}
+  treeImage: {fileID: 202339825}
 --- !u!1 &1861776094
 GameObject:
   m_ObjectHideFlags: 0
@@ -11738,52 +11773,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1967128750}
     m_Modifications:
-    - target: {fileID: 1174095644206855101, guid: 7f22d6ee5b4e9ba4d869da2ead1c9dc5,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1174095644206855101, guid: 7f22d6ee5b4e9ba4d869da2ead1c9dc5,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1174095644206855101, guid: 7f22d6ee5b4e9ba4d869da2ead1c9dc5,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2363347563440347113, guid: 7f22d6ee5b4e9ba4d869da2ead1c9dc5,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2363347563440347113, guid: 7f22d6ee5b4e9ba4d869da2ead1c9dc5,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2389229685100732864, guid: 7f22d6ee5b4e9ba4d869da2ead1c9dc5,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: f2d269ecfa04d614e806fddf1edc6fd2,
-        type: 3}
-    - target: {fileID: 2389229685100732864, guid: 7f22d6ee5b4e9ba4d869da2ead1c9dc5,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2389229685100732864, guid: 7f22d6ee5b4e9ba4d869da2ead1c9dc5,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2389229685100732864, guid: 7f22d6ee5b4e9ba4d869da2ead1c9dc5,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2950712654524964549, guid: 7f22d6ee5b4e9ba4d869da2ead1c9dc5,
         type: 3}
       propertyPath: loseText
@@ -11791,9 +11780,9 @@ PrefabInstance:
       objectReference: {fileID: 163214454}
     - target: {fileID: 2950712654524964549, guid: 7f22d6ee5b4e9ba4d869da2ead1c9dc5,
         type: 3}
-      propertyPath: healthSlider
-      value: 
-      objectReference: {fileID: 166833090}
+      propertyPath: maxHealth
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2950712654524964550, guid: 7f22d6ee5b4e9ba4d869da2ead1c9dc5,
         type: 3}
       propertyPath: m_RootOrder
@@ -11853,32 +11842,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Yggrdasil
-      objectReference: {fileID: 0}
-    - target: {fileID: 2950712654524964551, guid: 7f22d6ee5b4e9ba4d869da2ead1c9dc5,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7615428221592100882, guid: 7f22d6ee5b4e9ba4d869da2ead1c9dc5,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: f2d269ecfa04d614e806fddf1edc6fd2,
-        type: 3}
-    - target: {fileID: 7615428221592100882, guid: 7f22d6ee5b4e9ba4d869da2ead1c9dc5,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7615428221592100882, guid: 7f22d6ee5b4e9ba4d869da2ead1c9dc5,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7615428221592100882, guid: 7f22d6ee5b4e9ba4d869da2ead1c9dc5,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f22d6ee5b4e9ba4d869da2ead1c9dc5, type: 3}
