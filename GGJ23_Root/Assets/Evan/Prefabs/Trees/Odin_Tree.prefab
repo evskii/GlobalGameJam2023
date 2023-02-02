@@ -205,6 +205,7 @@ GameObject:
   - component: {fileID: 4963663014502618461}
   - component: {fileID: 4963663014502618460}
   - component: {fileID: 4963663014502618467}
+  - component: {fileID: 329542767}
   m_Layer: 0
   m_Name: Odin_Tree
   m_TagString: Tree
@@ -277,6 +278,22 @@ MonoBehaviour:
   fireRate: 3
   projectileSpeed: 2.5
   showDebug: 1
+--- !u!114 &329542767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4963663014502618458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f53db7a15503cfd489f07cd037bb80b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startScale: {x: 0, y: 0, z: 0}
+  finalScale: {x: 1, y: 1, z: 1}
+  lerpSpeed: 1
+  lerping: 0
 --- !u!1 &4963663014707345326
 GameObject:
   m_ObjectHideFlags: 0
