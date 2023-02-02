@@ -22,6 +22,13 @@ public abstract class Tree : MonoBehaviour, IDamageable
     public virtual void Think() {
         
     }
+
+    public void Respawn() {
+        currentHealth = maxHealth;
+        GetComponent<LerpLocalScale>().LerpToFinal();
+        
+    }
+
     public void TakeDamage(int amount) {
         currentHealth -= amount;
         if (currentHealth <= 0) {

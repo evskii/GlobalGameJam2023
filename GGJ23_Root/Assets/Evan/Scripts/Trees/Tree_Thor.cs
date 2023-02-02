@@ -27,6 +27,7 @@ public class Tree_Thor : Tree
 	
 	private void Awake() {
 		lineRenderer = GetComponent<LineRenderer>();
+		currentHealth = maxHealth;
 	}
 	
 	public override void Fire() {
@@ -49,7 +50,7 @@ public class Tree_Thor : Tree
 		} else {
 			if (currentTarget) {
 
-				if (Vector3.Distance(transform.position, currentTarget.transform.position) >= fireRange) {
+				if (Vector3.Distance(transform.position, currentTarget.transform.position) >= fireRange || !currentTarget.transform.CompareTag("Enemy")) {
 					currentTarget = null;
 					return;
 				}
