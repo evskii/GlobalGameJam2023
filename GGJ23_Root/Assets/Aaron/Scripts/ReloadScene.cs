@@ -7,6 +7,14 @@ public class ReloadScene : MonoBehaviour
 {
     public void ReloadCurrentScene()
     {
-        Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+        StartCoroutine(Reload());
+    }
+
+    public IEnumerator Reload()
+    {
+        yield return new WaitForSeconds(2f);
+        {
+            Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+        }
     }
 }
